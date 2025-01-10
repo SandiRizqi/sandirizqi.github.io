@@ -12,6 +12,7 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const fadeInUpClass = "transform transition-all duration-500 ease-out hover:scale-105";
   const navbarClass = `fixed w-full z-50 transition-all duration-300 ${
     scrollY > 50 ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
   }`;
@@ -20,33 +21,44 @@ const Portfolio = () => {
   const projects = [
     {
       title: "Web-GIS",
-      description: "Built a full-stack e-commerce platform using Next.js, Node.js, and MongoDB",
-      tags: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
-      link: "#"
+      image: "/images/webgis_platform.png",
+      description: "Built a full-stack Web-GIS  platform using Next.js and Microservices architecture",
+      tags: ["Next.js", "Django", "Postgres", "Geoserver", "AWS"],
     },
     {
       title: "Task Management App",
-      description: "Developed a real-time task management application with React and Firebase",
-      tags: ["React", "Firebase", "Material-UI"],
-      link: "#"
+      image: "/images/taskmanager.png",
+      description: "Developed a  task management application with React and Firebase to manage and monitor company's projects",
+      tags: ["React", "Firebase", "Python"],
+      link: "https://www.geo-circle.com/"
     },
     {
       title: "Machine Learning App",
-      description: "Designed and developed a responsive portfolio website using modern technologies",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      link: "#"
+      image: "/images/ml.png",
+      description: "Designed and developed a  modern  Machine Learning technologies for Geospatial Data",
+      tags: ["Next.js", "Python", "Pytorch", "Scikit-Learn", "Kubernetes", "Docker"],
+  
     },
     {
-      title: "Portfolio Website",
-      description: "Designed and developed a responsive portfolio website using modern technologies",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      link: "#"
+      title: "Monitoring & Alert System",
+      image: "/images/monitoring.png",
+      description: "Designed and developed a modern technology to Monitor Hotspot and Deforestation",
+      tags: ["Next.js", "Python", "Kubernetes", "Microservice"],
+      
+    },
+    {
+      title: "IELTS Simulation Platform",
+      image: "/images/speedyielts.png",
+      description: "Designed and developed an Online Platform to Simulate 4 Skills Official IELTS Test that Powered by LLM",
+      tags: ["Next.js", "Python", "Generative AI", "Firebase"],
+      link: "https://speedyielts.com/"
     }
   ];
 
   const skills = [
     "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
-    "Python", "PostgreSQL", "MongoDB", "AWS", "Docker", "Django", "Microservice", "Kubernetes"
+    "Python", "PostgreSQL", "MongoDB", "AWS", "Docker", "Django", "Microservices", "Kubernetes", "Firebase", "LLM (ChatGPT/Gemini)", "GIS", "Remote Sensing",
+    "DevOps", "Git", "Geoserver"
   ];
 
   return (
@@ -56,8 +68,8 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Sandi Rizqi
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
+                SandiRizqi
               </span>
             </div>
 
@@ -137,7 +149,7 @@ const Portfolio = () => {
             </div>
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
               <span className="block">Hi, I'm Sandi Rizqi</span>
-              <span className="block text-blue-600">Full Stack Web and Machine Learning  Developer</span>
+              <span className="block text-blue-600 text-5xl">Full Stack Web and Machine Learning  Developer</span>
             </h1>
             <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
             GIS (Geographic Information System) and Geo-Artificial Intelligence practitioner with over 5 years of experience. Adept at developing cutting-edge spatial data processing  and analytics technology, combining web, GIS, and artificial intelligence to drive efficiency and innovation
@@ -166,28 +178,42 @@ const Portfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow duration-300"
+                className={`${fadeInUpClass} bg-white rounded-xl overflow-hidden shadow-lg`}
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {project.title}
-                </h3>
-                <p className="text-gray-500 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="relative overflow-hidden group">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="p-4 text-white">
+                      <h3 className="text-lg font-semibold">{project.title}</h3>
+                    </div>
+                  </div>
                 </div>
-                <a
-                  href={project.link}
-                  className="inline-flex items-center text-blue-600 hover:text-blue-800"
-                >
-                  View Project <ExternalLink size={16} className="ml-1" />
-                </a>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  {project?.link && (
+                    <a
+                      href={project.link}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 group"
+                    >
+                      View Project
+                      <ExternalLink size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -217,11 +243,11 @@ const Portfolio = () => {
       <section id="contact" className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Get In Touch
             </h2>
             
-            <div className="max-w-md mx-auto">
+            <div className={`${fadeInUpClass} bg-white rounded-xl shadow-lg p-8 max-w-md mx-auto`}>
               <form className="space-y-6">
                 <div>
                   <input
