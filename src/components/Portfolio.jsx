@@ -1,10 +1,36 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Mail, Link2, ExternalLink } from 'lucide-react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [messege, setMessege] = useState(null);
+
+
+  async function sendEmail(e) {
+    e.preventDefault();
+
+    if (!messege) {
+      Swal.fire({
+        title: 'Oops...',
+        text: 'Something went wrong! You need to complete the form',
+        icon: 'error',
+        confirmButtonText: 'Try again',
+        showConfirmButton: false
+      });
+
+      return;
+      
+    };
+
+    
+    
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -58,7 +84,7 @@ const Portfolio = () => {
   const skills = [
     "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
     "Python", "PostgreSQL", "MongoDB", "AWS", "Docker", "Django", "Microservices", "Kubernetes", "Firebase", "LLM (ChatGPT/Gemini)", "GIS", "Remote Sensing",
-    "DevOps", "Git", "Geoserver"
+    "DevOps", "Git", "Geoserver", "Machine Learning", "Deep Learning", "Computer Vision"
   ];
 
   return (
@@ -243,12 +269,16 @@ const Portfolio = () => {
       <section id="contact" className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Get In Touch
             </h2>
+            <div className='flex flex-1 items-center justify-center mb-8 space-x-8 text-blue-600'>
+              <Link2 />  <Mail /> <Link2 />
+            </div>
+            
             
             <div className={`${fadeInUpClass} bg-white rounded-xl shadow-lg p-8 max-w-md mx-auto`}>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={sendEmail} >
                 <div>
                   <input
                     type="text"
@@ -271,7 +301,7 @@ const Portfolio = () => {
                   ></textarea>
                 </div>
                 <button
-                  type="submit"
+                  type='submit'
                   className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200"
                 >
                   Send Message
