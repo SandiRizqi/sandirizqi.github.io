@@ -16,15 +16,20 @@ const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const [state, handleSubmit] = useForm("mzzzwgab");
 
-  if (state.succeeded) {
-    Swal.fire({
-      title: 'Message Sent',
-      text: 'Thank you for your message.',
-      icon: 'success',
-      showConfirmButton: false
-    });
-  }
+  
   // const [messege, setMessege] = useState(null);
+
+  useEffect(() => {
+    if (state.succeeded) {
+      Swal.fire({
+        title: 'Message Sent',
+        text: 'Thank you for your message.',
+        icon: 'success',
+        showConfirmButton: false
+      });
+    }
+
+  },[state])
 
 
 
