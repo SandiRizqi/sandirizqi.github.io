@@ -1,36 +1,63 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Mail, Link2, ExternalLink } from 'lucide-react';
-import axios from 'axios';
+// import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+// import axios from 'axios';
+import { useForm, ValidationError } from '@formspree/react';
 import Swal from 'sweetalert2';
 
+// const mailerSend = new MailerSend({
+//   apiKey: process.env.NEXT_PUBLIC_MAILER_KEY || '',
+// });
 
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [messege, setMessege] = useState(null);
+  const [state, handleSubmit] = useForm("mzzzwgab");
+
+  if (state.succeeded) {
+    Swal.fire({
+      title: 'Message Sent',
+      text: 'Thank you for your message.',
+      icon: 'success',
+      showConfirmButton: false
+    });
+  }
+  // const [messege, setMessege] = useState(null);
 
 
-  async function sendEmail(e) {
-    e.preventDefault();
 
-    if (!messege) {
-      Swal.fire({
-        title: 'Oops...',
-        text: 'Something went wrong! You need to complete the form',
-        icon: 'error',
-        confirmButtonText: 'Try again',
-        showConfirmButton: false
-      });
+  // async function sendEmail(e) {
+  //   e.preventDefault();
+  // //   const sentFrom = new Sender("trial-jy7zpl9o800l5vx6.mlsender.net", "SandiRizqi");
+  // // const recipients = [
+  // //     new Recipient("a.sandi.rizqi@gmail.com", "SandiRizqi")
+  // // ];
 
-      return;
-      
-    };
+  // // const emailParams = new EmailParams()
+  // // .setFrom(sentFrom)
+  // // .setTo(recipients)
+  // // .setSubject("SandiPortfolio")
+  // // .setTemplateId('k68zxl2q979lj905')
+  // //   mailerSend.email.send(emailParams);
 
-    
-    
-  };
+  //   if (!messege) {
+  //     Swal.fire({
+  //       title: 'Oops...',
+  //       text: 'Something went wrong! You need to complete the form',
+  //       icon: 'error',
+  //       confirmButtonText: 'Try again',
+  //       showConfirmButton: false
+  //     });
+
+  //     return;
+
+  //   };
+
+
+
+  // };
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -39,9 +66,8 @@ const Portfolio = () => {
   }, []);
 
   const fadeInUpClass = "transform transition-all duration-500 ease-out hover:scale-105";
-  const navbarClass = `fixed w-full z-50 transition-all duration-300 ${
-    scrollY > 50 ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
-  }`;
+  const navbarClass = `fixed w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    }`;
 
 
   const projects = [
@@ -63,14 +89,14 @@ const Portfolio = () => {
       image: "/images/ml.png",
       description: "Designed and developed a  modern  Machine Learning technologies for Geospatial Data",
       tags: ["Next.js", "Python", "Pytorch", "Scikit-Learn", "Kubernetes", "Docker"],
-  
+
     },
     {
       title: "Monitoring & Alert System",
       image: "/images/monitoring.png",
       description: "Designed and developed a modern technology to Monitor Hotspot and Deforestation",
       tags: ["Next.js", "Python", "Kubernetes", "Microservice"],
-      
+
     },
     {
       title: "IELTS Simulation Platform",
@@ -165,9 +191,9 @@ const Portfolio = () => {
                 <div className="absolute inset-0 bg-blue-100 rounded-full transform rotate-6"></div>
                 <div className="absolute inset-0 bg-blue-200 rounded-full transform -rotate-6"></div>
                 <div className="relative rounded-full overflow-hidden border-4 border-white shadow-lg">
-                  <img 
-                    src="https://cdn.geo-circle.com/static/images/sandi.jpeg" 
-                    alt="Sandi Rizqi" 
+                  <img
+                    src="https://cdn.geo-circle.com/static/images/sandi.jpeg"
+                    alt="Sandi Rizqi"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -178,7 +204,7 @@ const Portfolio = () => {
               <span className="block text-blue-600 text-5xl">Full Stack Web and Machine Learning  Developer</span>
             </h1>
             <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            GIS (Geographic Information System) and Geo-Artificial Intelligence practitioner with over 5 years of experience. Adept at developing cutting-edge spatial data processing  and analytics technology, combining web, GIS, and artificial intelligence to drive efficiency and innovation
+              GIS (Geographic Information System) and Geo-Artificial Intelligence practitioner with over 5 years of experience. Adept at developing cutting-edge spatial data processing  and analytics technology, combining web, GIS, and artificial intelligence to drive efficiency and innovation
             </p>
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
@@ -275,34 +301,49 @@ const Portfolio = () => {
             <div className='flex flex-1 items-center justify-center mb-8 space-x-8 text-blue-600'>
               <Link2 />  <Mail /> <Link2 />
             </div>
-            
-            
+
+
             <div className={`${fadeInUpClass} bg-white rounded-xl shadow-lg p-8 max-w-md mx-auto`}>
-              <form className="space-y-6" onSubmit={sendEmail} >
+              <form className="space-y-6" onSubmit={handleSubmit} >
                 <div>
                   <input
                     type="text"
+                    name="name"
                     placeholder="Your Name"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
+
                 </div>
                 <div>
                   <input
                     type="email"
+                    name="email"
                     placeholder="Your Email"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
                   />
                 </div>
                 <div>
                   <textarea
                     placeholder="Your Message"
                     rows="4"
+                    name="message"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   ></textarea>
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={state.errors}
+                  />
                 </div>
                 <button
                   type='submit'
                   className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200"
+                  disabled={state.submitting}
                 >
                   Send Message
                 </button>
