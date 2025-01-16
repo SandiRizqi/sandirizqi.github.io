@@ -25,11 +25,13 @@ const Portfolio = () => {
         title: 'Message Sent',
         text: 'Thank you for your message.',
         icon: 'success',
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 2000, // Alert will auto-close after 2 seconds
+      }).then(() => {
+        window.location.reload(); // Reload the page after the alert is closed
       });
     }
-
-  },[state])
+  }, [state]);
 
 
 
