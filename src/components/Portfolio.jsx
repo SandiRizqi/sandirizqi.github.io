@@ -111,6 +111,13 @@ const Portfolio = () => {
       description: "Designed and developed an Online Platform to Simulate 4 Skills Official IELTS Test that Powered by LLM",
       tags: ["Next.js", "Python", "Generative AI", "Firebase"],
       link: "https://speedyielts.com/"
+    },
+    {
+      title: "Satellite Imagery Explorer",
+      image: "/images/ie.png",
+      description: "Designed and developed an Online Platform to search satellite images and orders management",
+      tags: ["Next.js", "Python",],
+      link: "https://ie.ruangbumi.com/"
     }
   ];
 
