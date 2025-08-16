@@ -118,7 +118,15 @@ const Portfolio = () => {
       description: "Designed and developed an Online Platform to search satellite images and orders management",
       tags: ["Next.js", "Python",],
       link: "https://ie.ruangbumi.com/"
-    }
+    },
+    {
+      title: "Land Monitoring Full Stack",
+      image: "/images/dashboard-monitoring.png",
+      description: "Designed and developed a Full Stack Platform for Land Monitoring and Alert System",
+      tags: ["Next.js", "Python", "Geoserver", "GCP" ],
+      link: "https://monitoring.geo-circle.com/dashboard/"
+    },
+
   ];
 
   const skills = [
