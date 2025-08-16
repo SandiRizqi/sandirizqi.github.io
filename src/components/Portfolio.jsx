@@ -16,7 +16,7 @@ const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const [state, handleSubmit] = useForm("mzzzwgab");
 
-  
+
   // const [messege, setMessege] = useState(null);
 
   useEffect(() => {
@@ -81,58 +81,64 @@ const Portfolio = () => {
     {
       title: "Web-GIS",
       image: "/images/webgis_platform.png",
-      description: "Built a full-stack Web-GIS  platform using Next.js and Microservices architecture",
+      description: "Developed a full-stack Web-GIS platform leveraging Next.js, Django, and microservices to deliver scalable geospatial data management and visualization on AWS.",
       tags: ["Next.js", "Django", "Postgres", "Geoserver", "AWS"],
     },
     {
       title: "Task Management App",
       image: "/images/taskmanager.png",
-      description: "Developed a  task management application with React and Firebase to manage and monitor company's projects",
+      description: "Built a collaborative task management application with React and Firebase, enabling efficient project tracking and performance monitoring across teams.",
       tags: ["React", "Firebase", "Python"],
       link: "https://www.geo-circle.com/"
     },
     {
       title: "Machine Learning App",
       image: "/images/ml.png",
-      description: "Designed and developed a  modern  Machine Learning technologies for Geospatial Data",
+      description: "Designed and implemented geospatial machine learning solutions using PyTorch and Scikit-Learn, deployed on Kubernetes and Docker for scalable model serving.",
       tags: ["Next.js", "Python", "Pytorch", "Scikit-Learn", "Kubernetes", "Docker"],
-
     },
     {
       title: "Monitoring & Alert System",
       image: "/images/monitoring.png",
-      description: "Designed and developed a modern technology to Monitor Hotspot and Deforestation",
+      description: "Engineered a real-time monitoring and alert system for forest fire hotspots and deforestation, powered by microservices and scalable Python-based backend.",
       tags: ["Next.js", "Python", "Kubernetes", "Microservice"],
-
     },
     {
       title: "IELTS Simulation Platform",
       image: "/images/speedyielts.png",
-      description: "Designed and developed an Online Platform to Simulate 4 Skills Official IELTS Test that Powered by LLM",
+      description: "Developed an AI-powered online platform simulating all four IELTS skills, integrating Next.js with Generative AI to provide realistic and interactive test experiences.",
       tags: ["Next.js", "Python", "Generative AI", "Firebase"],
       link: "https://speedyielts.com/"
     },
     {
       title: "Satellite Imagery Explorer",
       image: "/images/ie.png",
-      description: "Designed and developed an Online Platform to search satellite images and orders management",
-      tags: ["Next.js", "Python",],
+      description: "Built a satellite imagery discovery and order management platform with intuitive search capabilities, enabling streamlined access to geospatial datasets.",
+      tags: ["Next.js", "Python"],
       link: "https://ie.ruangbumi.com/"
     },
     {
       title: "Land Monitoring Full Stack",
       image: "/images/dashboard-monitoring.png",
-      description: "Designed and developed a Full Stack Platform for Land Monitoring and Alert System",
-      tags: ["Next.js", "Python", "Geoserver", "GCP" ],
+      description: "Designed and deployed a full-stack land monitoring dashboard with automated deforestation alerts, integrating Next.js, Geoserver, and GCP cloud services.",
+      tags: ["Next.js", "Python", "Geoserver", "GCP"],
       link: "https://monitoring.geo-circle.com/dashboard/"
     },
+    {
+      title: "Satellite Imagery Sales Assistant",
+      image: "/images/arumi.png",
+      description: "Developed an AI-powered virtual assistant to guide clients in selecting and estimating satellite imagery needs, integrating OpenAI and WhatsApp automation.",
+      tags: ["n8n", "Open AI", "AWS", "WhatsApp"],
+      link: "https://api.whatsapp.com/send/?phone=6285183181223"
+    },
+
 
   ];
 
   const skills = [
     "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
     "Python", "PostgreSQL", "MongoDB", "AWS", "Docker", "Django", "Microservices", "Kubernetes", "Firebase", "LLM (ChatGPT/Gemini)", "GIS", "Remote Sensing",
-    "DevOps", "Git", "Geoserver", "Machine Learning", "Deep Learning", "Computer Vision"
+    "DevOps", "Git", "Geoserver", "Machine Learning", "Deep Learning", "Computer Vision", "n8n"
   ];
 
   return (
